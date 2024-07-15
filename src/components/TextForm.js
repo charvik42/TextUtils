@@ -17,7 +17,7 @@ export default function TextForm(props) {
         setText(newText);
     }
     const handleFirst = ()=>{
-        let newText = text.charAt(0).toUpperCase() + text.slice(1);;
+        let newText = text.charAt(0).toUpperCase() + text.slice(1);
         setText(newText);
     }
     const handleOnChange = (event)=>{
