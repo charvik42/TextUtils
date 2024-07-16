@@ -2,6 +2,12 @@ import React, {useState} from 'react'
 import PropTypes from 'prop-types'
 
 export default function TextForm(props) {
+
+    const [text, setText] = useState('');
+    const [boldText, setBold] = useState({
+        fontWeight: 'normal'
+    });
+
     const handleUpClick = ()=>{
         /*console.log("Uppercase was clicked " + text);*/
         let newText = text.toUpperCase();
@@ -20,26 +26,41 @@ export default function TextForm(props) {
         let newText = text.charAt(0).toUpperCase() + text.slice(1);
         setText(newText);
     }
+    const handleBold = () =>{
+        if (boldText.fontWeight == 'normal'){
+            setBold(
+                {
+                    fontWeight: 'bold'
+                }
+            )
+        }
+        if (boldText.fontWeight == 'bold'){
+            setBold(
+                {
+                    fontStyle: 'italic'
+                }
+            )
+        }
+    }
+
 
     const handleOnChange = (event)=>{
         console.log("On change");
         setText(event.target.value);
     }
 
-    const [text, setText] = useState('');
-
     return (
         <>        
             <div className="container">
             <h1>{props.heading}</h1>
             <div className="mb-3">
-            <textarea className="form-control" value= {text} onChange = {handleOnChange} id="myBox" rows="8"></textarea>
+            <textarea className="form-control" value= {text} style = {boldText} onChange = {handleOnChange} id="myBox" rows="8"></textarea>
             </div>
             <button className="btn btn-success mx-1" onClick={handleUpClick}>Convert to uppercase</button>
             <button className="btn btn-success mx-1" onClick={handleDownClick}>Convert to lowercase</button>
             <button className="btn btn-success mx-1" onClick={handleClearText}>Clear Text</button>
             <button className="btn btn-success mx-1" onClick={handleFirst}>Convert first letter to capital</button>
-
+            <button className="btn btn-success mx-1" onClick={handleBold}>Convert to bold/italics</button>
             </div>
             <div className="container my-3">
                 <h2>Your Text Summary</h2>
