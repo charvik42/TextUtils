@@ -62,25 +62,26 @@ export default function TextForm(props) {
 
     return (
         <>        
-            <div className="container">
+            <div className="container" style={{color: props.mode==='dark'?'white':'#042743'}}>
             <h1>{props.heading}</h1>
             <div className="mb-3">
-            <textarea className="form-control" value= {text} style = {boldText} onChange = {handleOnChange} id="myBox" rows="8"></textarea>
+            <textarea className="form-control" value= {text} style={{backgroundColor: props.mode==='dark'?'#042743':'white', color: props.mode==='dark'?'white':'#042743'}} onChange = {handleOnChange} id="myBox" rows="8"></textarea>
+           {/*<textarea className="form-control" value= {text} style={boldText} onChange = {handleOnChange} id="myBox" rows="8"></textarea>*/}
             </div>
             <button className="btn btn-success mx-1" onClick={handleUpClick}>Convert to uppercase</button>
             <button className="btn btn-success mx-1" onClick={handleDownClick}>Convert to lowercase</button>
             <button className="btn btn-success mx-1" onClick={handleClearText}>Clear Text</button>
             <button className="btn btn-success mx-1" onClick={handleFirst}>Convert first letter to capital</button>
-            <button className="btn btn-success mx-1" onClick={handleBold}>Convert to bold/italics</button>
+            {/*<button className="btn btn-success mx-1" onClick={handleBold}>Convert to bold/italics</button>*/}
             <button className="btn btn-success mx-1" onClick={handleCopy}>Copy Text</button>
             <button className="btn btn-success mx-1 my-2" onClick={handleExtraSpaces}>Remove extra spaces</button>
             </div>
-            <div className="container my-3">
+            <div className="container my-3" style={{color: props.mode==='dark'?'white':'#042743'}}>
                 <h2>Your Text Summary</h2>
                 <p>{text.split(" ").length-1} words and {text.length} characters</p>
                 <p>{0.008*text.split(" ").length} minutes read</p>
                 <h2>Preview</h2>
-                <p>{text}</p>
+                <p>{text.length>0?text:"Enter something in the textbox to preview it here"}</p>
             </div>
         </>
 
