@@ -12,19 +12,23 @@ export default function TextForm(props) {
         /*console.log("Uppercase was clicked " + text);*/
         let newText = text.toUpperCase();
         setText(newText);
+        props.showAlert("Converted to uppercase", "success");
     }
     const handleDownClick = ()=>{
         /*console.log("Lowercase was clicked " + text);*/
         let newText = text.toLowerCase();
         setText(newText);
+        props.showAlert("Converted to lowercase", "success");
     }
     const handleClearText = ()=>{
         let newText = '';
         setText(newText);
+        props.showAlert("Text has been cleared", "success");
     }
     const handleFirst = ()=>{
         let newText = text.charAt(0).toUpperCase() + text.slice(1);
         setText(newText);
+        props.showAlert("First word is capitalized", "success");
     }
     const handleBold = () =>{
         if (boldText.fontWeight == 'normal'){
@@ -53,11 +57,13 @@ export default function TextForm(props) {
         var text = document.getElementById("myBox");
         text.select();
         navigator.clipboard.writeText(text.value);
+        props.showAlert("Copied to clipboard", "success");
     }
 
     const handleExtraSpaces = () =>{
         let newText = text.split(/[ ]+/);
-        setText(newText.join(" "))
+        setText(newText.join(" "));
+        props.showAlert("Extra spaces have been removed", "success");
     }
 
     return (
