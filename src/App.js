@@ -16,7 +16,7 @@ function App() {
     })
     setTimeout(() => { 
       setAlert(null);
-      },1500);
+      },2000);
   }
 
   const toggleMode = () =>{
@@ -24,12 +24,25 @@ function App() {
       setMode('dark');
       document.body.style.backgroundColor = '#042743';
       showAlert("Dark mode has been enabled", "success");
+      document.title = "TextUtils - Dark Mode";
+      setInterval(() => {
+        document.title = "TextUtils is amazing";
+      }, 2000);
+      
     }
     else{
       setMode('light');
       document.body.style.backgroundColor = 'white';
       showAlert("Light mode has been enabled", "success");
-    }
+      document.title = "TextUtils - Light Mode";
+      {/*setInterval(() => {
+        document.title = "TextUtils is amazing";
+      }, 2000);
+      
+      setInterval(() => {
+        document.title = "Install TextUtils";
+      }, 1500);*/}
+}
   }
   return (
     <>
